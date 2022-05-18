@@ -81,4 +81,12 @@ public class BillImplTest {
         }
         assertEquals(195.00, testBill.getOrderPrice(itemsOrdered,user), 0.0);
     }
+
+    @Test
+    public void testTotaleConScontoSeTotaleSuperioreA1000Euro(){
+        for(int i=0; i<20; i++) {
+            itemsOrdered.add(new EItem( ItemType.Motherboard, "Azuz Pro",60.00));
+        }    
+        assertEquals(1080.00, testBill.getOrderPrice(itemsOrdered,user), 0.0);
+    }
 }
