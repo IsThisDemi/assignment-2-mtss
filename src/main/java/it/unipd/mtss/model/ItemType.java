@@ -1,0 +1,12 @@
+////////////////////////////////////////////////////////////////////
+// [RICCARDO] [MARTINELLO] [2009086]
+// [SAMUELE] [RIZZATO] [1226307]
+////////////////////////////////////////////////////////////////////
+package it.unipd.mtss.model;
+
+public enum ItemType {
+    Processor,
+    Motherboard, 
+    Mouse, 
+    Keyboard
+}

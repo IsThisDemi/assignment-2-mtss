@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC "-//Puppy Crawl//DTD Check Configuration 1.2//EN"
+"http://www.puppycrawl.com/dtds/configuration_1_2.dtd">
+
+<module name="Checker">
+	<module name="TreeWalker">
+
+		<module name="BooleanExpressionComplexity">
+		  <property name="max" value="7"/>
+		</module>
+		            
+		<module name="CyclomaticComplexity">
+		  <property name="max" value="30"/>
+		</module>	
+
+		<module name="MethodLength">
+		  <property name="tokens" value="METHOD_DEF"/>
+		  <property name="max" value="160"/>
+		  <property name="countEmpty" value="false"/>
+		</module>	
+
+		<module name="AvoidStarImport">
+		  <property name="excludes" value="java.io,java.net,java.lang.Math"/>
+		  <property name="allowClassImports" value="false"/>
+		  <property name="allowStaticMemberImports" value="false"/>
+		</module>
+		
+		<module name="EmptyCatchBlock">
+		  <property name="exceptionVariableName" value="expected|ignore"/>
+		</module>
+		
+		<module name="IllegalImport">
+		  <property name="illegalPkgs" value="java.io, java.sql"/>
+		</module>
+		
+		<module name="NeedBraces">
+		  <property name="allowSingleLineStatement" value="true"/>
+		</module>
+	
+	</module>
+
+	<module name="FileTabCharacter">
+		<property name="eachLine" value="true"/>
+	</module>	
+
+	<module name="FileLength">
+		<property name="max" value="2000"/>
+	</module>
+
+	
+  <module name="RegexpHeader">
+    <property name="headerFile" value="${checkstyle.header.file}"/>
+    <property name="multiLines" value="2,3,4"/>
+  </module>
+	
+  <module name="LineLength">
+		  <property name="max" value="160"/>
+	</module>
+
+</module>
