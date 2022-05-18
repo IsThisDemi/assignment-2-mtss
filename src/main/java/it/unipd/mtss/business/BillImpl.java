@@ -17,10 +17,13 @@ public class BillImpl implements Bill{
         double total = 0;
         int processori = 0;
         int mouse = 0;
+        int tastiere = 0;
 
         EItem ProcessoreMenoCostoso = null;
         EItem MouseMenoCostoso=null; 
-        
+        EItem TastieraMenoCostosa = null;
+        EItem MouseOTastieraMenoCostosa = null;
+
         if(itemsOrdered == null) {
             throw new BillException("Lista nulla");
         }
@@ -47,6 +50,20 @@ public class BillImpl implements Bill{
                     MouseMenoCostoso = item;
                 }
             }
+
+            if (item.getType() == ItemType.Keyboard) {
+                tastiere++;
+
+                if ((TastieraMenoCostosa == null) || (TastieraMenoCostosa.getPrice() > item.getPrice())) {
+                    TastieraMenoCostosa = item;
+                }
+            }
+
+            if (item.getType() == ItemType.Keyboard || item.getType() == ItemType.Mouse){
+                if ((MouseOTastieraMenoCostosa == null) || (MouseOTastieraMenoCostosa.getPrice() > item.getPrice())) {
+                    MouseOTastieraMenoCostosa = item;
+                }
+            }
         }
 
         // sconto se più di 5 processori
@@ -57,6 +74,10 @@ public class BillImpl implements Bill{
         //sconto se più di 10 mouse
         if (mouse > 10) {
             total -= MouseMenoCostoso.getPrice() * 1;
+        }
+
+        if (tastiere == mouse && tastiere != 0) {
+            total -= MouseOTastieraMenoCostosa.getPrice() * 1;
         }
         return total;
     }
