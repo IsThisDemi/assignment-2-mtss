@@ -50,5 +50,14 @@ public class BillImplTest {
         itemsOrdered = null;
         testBill.getOrderPrice(itemsOrdered, user);
     }
+
+    @Test
+    public void testTotaleConScontoSulMenoCaroSePiùDiCinqueProcessori() {
+        
+        for(int i=0; i<6; i++) {
+            itemsOrdered.add(new EItem( ItemType.Processor, "Pintel e700",110.00));
+        }       
+        assertEquals(605.00, testBill.getOrderPrice(itemsOrdered,user), 0.0);
+    }
     
 }
